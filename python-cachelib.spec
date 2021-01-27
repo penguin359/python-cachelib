@@ -2,7 +2,7 @@
 
 Name:           python-%{srcname}
 Version:        0.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of cache libraries with a common API
 
 License:        BSD
@@ -43,5 +43,8 @@ BuildRequires:  python3dist(setuptools)
 
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Fri Jul 31 2020 Matěj Grabovský <mgrabovs@redhat.com> - 0.1.1-1
 - Initial package
