@@ -1,8 +1,8 @@
 %global srcname cachelib
 
 Name:           python-%{srcname}
-Version:        0.1.1
-Release:        3%{?dist}
+Version:        0.2.0
+Release:        1%{?dist}
 Summary:        A collection of cache libraries with a common API
 
 License:        BSD
@@ -21,7 +21,13 @@ Extracted from Werkzeug.}
 %package -n python3-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
+BuildRequires:  memcached
+BuildRequires:  redis
 BuildRequires:  python3-devel
+BuildRequires:  python3-pylibmc
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xprocess
+BuildRequires:  python3-redis
 BuildRequires:  python3dist(setuptools)
 
 %description -n python3-%{srcname} %{_description}
@@ -32,17 +38,25 @@ BuildRequires:  python3dist(setuptools)
 %build
 %py3_build
 
+%check
+# uWSGI is not packaged for Fedora so skip tests for that backend.
+%pytest -v -r s -k 'not Uwsgi'
+
 %install
 %py3_install
 
 %files -n python3-%{srcname}
-%license LICENSE
+%license LICENSE.rst
+%doc CHANGES.rst
 %doc README.rst
 %{python3_sitelib}/%{srcname}-*.egg-info/
 %{python3_sitelib}/%{srcname}/
 
 
 %changelog
+* Fri Jun 25 2021 Matěj Grabovský <mgrabovs@redhat.com> - 0.2.0-1
+- New upstream release
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.1.1-3
 - Rebuilt for Python 3.10
 
