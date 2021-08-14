@@ -1,8 +1,8 @@
 %global srcname cachelib
 
 Name:           python-%{srcname}
-Version:        0.2.0
-Release:        2%{?dist}
+Version:        0.3.0
+Release:        1%{?dist}
 Summary:        A collection of cache libraries with a common API
 
 License:        BSD
@@ -54,6 +54,9 @@ BuildRequires:  python3dist(setuptools)
 
 
 %changelog
+* Sat Aug 14 2021 Matěj Grabovský <mgrabovs@redhat.com> - 0.3.0-1
+- New upstream release
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
