@@ -1,7 +1,7 @@
 %global srcname cachelib
 
 Name:           python-%{srcname}
-Version:        0.3.0
+Version:        0.4.0
 Release:        1%{?dist}
 Summary:        A collection of cache libraries with a common API
 
@@ -54,6 +54,9 @@ BuildRequires:  python3dist(setuptools)
 
 
 %changelog
+* Mon Oct 04 2021 Matěj Grabovský <mgrabovs@redhat.com> - 0.4.0-1
+- New upstream release
+
 * Sat Aug 14 2021 Matěj Grabovský <mgrabovs@redhat.com> - 0.3.0-1
 - New upstream release
 
