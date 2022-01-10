@@ -3,18 +3,19 @@ discover:
   tests:
     - name: /upstream/unit
       test: |
-        git clone --depth=1 https://github.com/pallets/cachelib.git
+        git clone https://github.com/pallets/cachelib.git
         cd cachelib
+        git reset --hard 0.5.0
         pytest -v -r s -k 'not Uwsgi'
 prepare:
   how: install
   package:
     - git-core
     - memcached
-    - redis
     - python3-pylibmc
     - python3-pytest
     - python3-pytest-xprocess
     - python3-redis
+    - redis
 execute:
   how: tmt
