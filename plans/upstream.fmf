@@ -3,10 +3,12 @@ discover:
   tests:
     - name: /upstream/unit
       test: |
+        useradd -M tester
         git clone https://github.com/pallets/cachelib.git
         cd cachelib
         git reset --hard 0.5.0
-        pytest -v -r s -k 'not Uwsgi'
+        chown -R tester: .
+        sudo -u tester -- pytest -v -r s -k 'not Uwsgi'
 prepare:
   how: install
   package:
