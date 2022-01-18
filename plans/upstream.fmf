@@ -6,7 +6,7 @@ discover:
         useradd -M tester
         git clone https://github.com/pallets/cachelib.git
         cd cachelib
-        git reset --hard 0.5.0
+        git reset --hard 0.6.0
         chown -R tester: .
         sudo -u tester -- pytest -v -r s -k 'not Uwsgi'
 prepare:
