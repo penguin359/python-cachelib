@@ -20,7 +20,6 @@ Extracted from Werkzeug.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
 BuildRequires:  memcached
 BuildRequires:  redis
 BuildRequires:  python3-devel
@@ -32,25 +31,32 @@ BuildRequires:  python3dist(setuptools)
 
 %description -n python3-%{srcname} %{_description}
 
+
 %prep
 %autosetup -n %{srcname}-%{version}
 
+
+%generate_buildrequires
+%pyproject_buildrequires -r
+
+
 %build
-%py3_build
+%pyproject_wheel
+
+
+%install
+%pyproject_install
+%pyproject_save_files cachelib
+
 
 %check
 # uWSGI is not packaged for Fedora so skip tests for that backend.
 %pytest -v -r s -k 'not Uwsgi'
 
-%install
-%py3_install
 
-%files -n python3-%{srcname}
-%license LICENSE.rst
+%files -n python3-%{srcname} -f %{pyproject_files}
 %doc CHANGES.rst
 %doc README.rst
-%{python3_sitelib}/%{srcname}-*.egg-info/
-%{python3_sitelib}/%{srcname}/
 
 
 %changelog
