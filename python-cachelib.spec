@@ -2,7 +2,7 @@
 
 Name:           python-%{srcname}
 Version:        0.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of cache libraries with a common API
 
 License:        BSD
@@ -60,6 +60,9 @@ BuildRequires:  python3dist(setuptools)
 
 
 %changelog
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Tue Jan 18 2022 Matěj Grabovský <mgrabovs@redhat.com> - 0.6.0-1
 - New upstream release
 
