@@ -1,12 +1,11 @@
 summary: Run upstream unit tests
 discover:
+  dist-git-source: true
   tests:
     - name: /upstream/unit
       test: |
+        cd $TMT_SOURCE_DIR/*/
         useradd -M tester
-        git clone https://github.com/pallets/cachelib.git
-        cd cachelib
-        git reset --hard 0.9.0
         chown -R tester: .
         sudo -u tester -- pytest -v -r s -k 'not Uwsgi'
 prepare:
@@ -14,6 +13,7 @@ prepare:
   package:
     - git-core
     - memcached
+    - python3-cachelib
     - python3-pylibmc
     - python3-pytest
     - python3-pytest-xprocess
