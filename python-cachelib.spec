@@ -1,8 +1,8 @@
 %global srcname cachelib
 
 Name:           python-%{srcname}
-Version:        0.7.0
-Release:        2%{?dist}
+Version:        0.9.0
+Release:        1%{?dist}
 Summary:        A collection of cache libraries with a common API
 
 License:        BSD
@@ -60,6 +60,9 @@ BuildRequires:  python3dist(setuptools)
 
 
 %changelog
+* Mon Jun 27 2022 Matěj Grabovský <mgrabovs@redhat.com> - 0.9.0-1
+- New upstream release
+
 * Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.7.0-2
 - Rebuilt for Python 3.11
 
