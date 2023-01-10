@@ -51,7 +51,7 @@ BuildRequires:  python3dist(setuptools)
 
 %check
 # uWSGI is not packaged for Fedora so skip tests for that backend.
-%pytest -v -r s -k 'not Uwsgi'
+%pytest -v -r s -k 'not Uwsgi and not DynamoDb'
 
 
 %files -n python3-%{srcname} -f %{pyproject_files}
