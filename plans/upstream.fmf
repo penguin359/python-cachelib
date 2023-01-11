@@ -2,12 +2,14 @@ summary: Run upstream unit tests
 discover:
   dist-git-source: true
   tests:
+    # uWSGI is not packaged for Fedora and there is no straightforward way to test
+    # Amazon DynamoDB so skip tests for these backends.
     - name: /upstream/unit
       test: |
         cd $TMT_SOURCE_DIR/*/
         useradd -M tester
         chown -R tester: .
-        sudo -u tester -- pytest -v -r s -k 'not Uwsgi'
+        sudo -u tester -- pytest -v -r s -k 'not Uwsgi and not DynamoDb'
 prepare:
   how: install
   package:
